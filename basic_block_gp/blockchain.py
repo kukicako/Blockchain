@@ -61,8 +61,7 @@ class Blockchain(object):
         raw_hash = hashlib.sha256(string_block.encode())
         # It converts the Python string into a byte string.
         # We must make sure that the Dictionary is Ordered,
-        # or we'll have inconsistent hashes
-      
+        # or we'll have inconsistent hashes     
 
         # TODO: Create the block_string
 
@@ -90,7 +89,7 @@ class Blockchain(object):
         in an effort to find a number that is a valid proof
         :return: A valid proof for the provided block
         """
-        block_string = json.dumps(block, sort_keys=True)       
+        block_string = json.dumps(block, sort_keys=True)
         proof = 0
         while self.valid_proof(block_string, proof) is False:
             proof += 1
@@ -114,6 +113,7 @@ class Blockchain(object):
         guess_hash = hashlib.sha256(guess).hexdigest()
 
         return guess_hash[:6] == "000000"
+
 
 # Instantiate our Node
 app = Flask(__name__)
